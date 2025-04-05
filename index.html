@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELAAN 2025 - University Cultural & Sports Fest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8f9fa;
+        }
+
+        /* Claymorphism styles */
+        .clay {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+            box-shadow: 
+                8px 8px 16px rgba(174, 174, 192, 0.4),
+                -8px -8px 16px rgba(255, 255, 255, 0.8),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+                inset -2px -2px 4px rgba(174, 174, 192, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .clay:hover {
+            box-shadow: 
+                10px 10px 20px rgba(174, 174, 192, 0.5),
+                -10px -10px 20px rgba(255, 255, 255, 0.9),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+                inset -2px -2px 4px rgba(174, 174, 192, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .clay-button {
+            background: rgba(14, 159, 110, 0.9);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 
+                4px 4px 8px rgba(14, 159, 110, 0.3),
+                -4px -4px 8px rgba(255, 255, 255, 0.2),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+                inset -1px -1px 2px rgba(14, 159, 110, 0.1);
+            border: 1px solid rgba(14, 159, 110, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .clay-button:hover {
+            box-shadow: 
+                6px 6px 12px rgba(14, 159, 110, 0.4),
+                -6px -6px 12px rgba(255, 255, 255, 0.3),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+                inset -1px -1px 2px rgba(14, 159, 110, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .clay-nav {
+            background: rgba(14, 159, 110, 0.9);
+            box-shadow: 
+                0 4px 12px rgba(14, 159, 110, 0.3),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+                inset -1px -1px 2px rgba(14, 159, 110, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .clay-dark {
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 16px;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.3),
+                -8px -8px 16px rgba(50, 61, 79, 0.4),
+                inset 2px 2px 4px rgba(50, 61, 79, 0.3),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(50, 61, 79, 0.3);
+            color: white;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070') center/cover;
+        }
+
+        .sports-bg {
+            background: linear-gradient(rgba(14, 159, 110, 0.3), rgba(14, 159, 110, 0.3)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=2070') center/cover;
+            border-radius: 20px;
+        }
+
+        .cultural-bg {
+            background: linear-gradient(rgba(30, 41, 59, 0.3), rgba(30, 41, 59, 0.3)), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2074') center/cover;
+            border-radius: 20px;
+        }
+
+        .university-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2071') center/cover;
+            border-radius: 20px;
+        }
+
+        .logo-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow: auto;
+        }
+
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="clay-nav fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-2xl font-bold text-white">ELAAN 2025</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-white hover:text-teal-200">Home</a>
+                    <a href="#about" class="text-white hover:text-teal-200">About</a>
+                    <a href="#events" class="text-white hover:text-teal-200">Events</a>
+                    <a href="#cultural" class="text-white hover:text-teal-200">Cultural</a>
+                    <a href="#sports" class="text-white hover:text-teal-200">Sports</a>
+                    <a href="#gallery" class="text-white hover:text-teal-200">Gallery</a>
+                    <a href="#team" class="text-white hover:text-teal-200">Team</a>
+                    <a href="#register" class="text-white hover:text-teal-200">Register</a>
+                </div>
+                <button class="md:hidden text-white" onclick="toggleMenu()">
+                    <i class="bi bi-list text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-teal-700 pb-4">
+            <a href="#home" class="block px-4 py-2 text-white hover:bg-teal-800">Home</a>
+            <a href="#about" class="block px-4 py-2 text-white hover:bg-teal-800">About</a>
+            <a href="#events" class="block px-4 py-2 text-white hover:bg-teal-800">Events</a>
+            <a href="#cultural" class="block px-4 py-2 text-white hover:bg-teal-800">Cultural</a>
+            <a href="#sports" class="block px-4 py-2 text-white hover:bg-teal-800">Sports</a>
+            <a href="#gallery" class="block px-4 py-2 text-white hover:bg-teal-800">Gallery</a>
+            <a href="#team" class="block px-4 py-2 text-white hover:bg-teal-800">Team</a>
+            <a href="#register" class="block px-4 py-2 text-white hover:bg-teal-800">Register</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-16">
+        <div class="text-center px-4">
+            <div class="logo-pulse mb-8">
+                <img src="https://images.unsplash.com/photo-1557683304-673a23048d34?q=80&w=400" alt="ELAAN 2025 Logo" class="w-32 h-32 mx-auto rounded-full mb-4 border-4 border-teal-400">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">ELAAN 2025</h1>
+            <h2 class="text-2xl md:text-4xl font-semibold mb-4">UNIVERSITY CULTURAL & SPORTS FEST</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Experience the grandest celebration of culture and sports at our university's flagship annual event.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#register" class="clay-button px-8 py-3 text-lg font-semibold">Register Now</a>
+                <a href="#brochure" class="bg-white text-teal-700 px-8 py-3 rounded-full text-lg font-semibold transition duration-300 hover:bg-gray-100">Download Brochure</a>
+            </div>
+            <div class="mt-12">
+                <p class="text-lg">March 15-20, 2025</p>
+                <p class="text-teal-300 text-lg font-semibold">6 Days • 30+ Events • Endless Memories</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <div class="bg-teal-700 text-white py-4">
+        <div class="container mx-auto">
+            <div id="countdown" class="flex justify-center items-center space-x-4 md:space-x-8">
+                <div class="text-center">
+                    <span id="days" class="text-2xl md:text-4xl font-bold">00</span>
+                    <p class="text-sm">Days</p>
+                </div>
+                <div class="text-center">
+                    <span id="hours" class="text-2xl md:text-4xl font-bold">00</span>
+                    <p class="text-sm">Hours</p>
+                </div>
+                <div class="text-center">
+                    <span id="minutes" class="text-2xl md:text-4xl font-bold">00</span>
+                    <p class="text-sm">Minutes</p>
+                </div>
+                <div class="text-center">
+                    <span id="seconds" class="text-2xl md:text-4xl font-bold">00</span>
+                    <p class="text-sm">Seconds</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About University Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 relative">
+                About Our University
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-teal-600 mt-4"></span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
+                <div>
+                    <div class="rounded-2xl overflow-hidden clay">
+                        <img src="https://images.unsplash.com/photo-1583373834259-46cc92173cb7?q=80&w=2071" alt="University Campus" class="w-full h-auto">
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-teal-700">Excellence Through Innovation</h3>
+                    <p class="text-gray-700 mb-6">Founded in 1975, our university has been at the forefront of academic excellence and innovation for over 50 years. We pride ourselves on fostering an environment where cultural diversity and athletic achievement go hand in hand with academic success.</p>
+                    <p class="text-gray-700 mb-6">The annual ELAAN festival represents our commitment to providing students with a holistic educational experience that celebrates creativity, teamwork, and competitive spirit.</p>
+                    <div class="flex space-x-4">
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-teal-600">15,000+</span>
+                            <span class="text-gray-600">Students</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-teal-600">500+</span>
+                            <span class="text-gray-600">Faculty</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-teal-600">50+</span>
+                            <span class="text-gray-600">Years</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About ELAAN -->
+            <div class="university-bg p-10 md:p-16 text-white mb-16">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h3 class="text-3xl font-bold mb-6">About ELAAN 2025</h3>
+                    <p class="mb-6">ELAAN, our flagship cultural and sports festival, has been a cornerstone of university life for over two decades. The festival brings together thousands of participants from universities across the country in a celebration of talent, skill, and camaraderie.</p>
+                    <p>This year's theme, "Unity in Diversity," celebrates the rich cultural tapestry that makes our university community unique while emphasizing the unity that sports and cultural activities foster among students from diverse backgrounds.</p>
+                </div>
+            </div>
+
+            <!-- Highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="clay p-8 text-center">
+                    <i class="bi bi-calendar-event text-5xl text-teal-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Previous Edition</h3>
+                    <p class="text-gray-600">Over 5,000 participants from 50+ colleges participated in ELAAN 2024.</p>
+                </div>
+                <div class="clay p-8 text-center">
+                    <i class="bi bi-trophy text-5xl text-teal-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Prize Pool</h3>
+                    <p class="text-gray-600">₹10,00,000 in prizes to be won across various competitions.</p>
+                </div>
+                <div class="clay p-8 text-center">
+                    <i class="bi bi-star text-5xl text-teal-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Celebrity Guests</h3>
+                    <p class="text-gray-600">Special performances and appearances by nationally recognized artists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 relative">
+                Upcoming Events
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-teal-600 mt-4"></span>
+            </h2>
+            
+            <div class="flex overflow-x-auto pb-6 gap-6 hide-scrollbar">
+                <div class="clay min-w-[300px] w-[300px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1478147427282-58a87a120781" alt="Dance" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-1 rounded mb-2">Cultural</span>
+                        <h3 class="text-xl font-bold mb-2">Dance Competition</h3>
+                        <p class="text-gray-600 mb-4">Show your moves and compete with the best dancers!</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-teal-600 font-medium">March 15, 2025</p>
+                            <p class="text-gray-500 text-sm">Main Auditorium</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="clay min-w-[300px] w-[300px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551927336-09d50efd69cd" alt="Football" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded mb-2">Sports</span>
+                        <h3 class="text-xl font-bold mb-2">Football Tournament</h3>
+                        <p class="text-gray-600 mb-4">Compete in our annual inter-college football championship!</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-teal-600 font-medium">March 16-18, 2025</p>
+                            <p class="text-gray-500 text-sm">University Ground</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="clay min-w-[300px] w-[300px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea" alt="Music" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-1 rounded mb-2">Cultural</span>
+                        <h3 class="text-xl font-bold mb-2">Battle of Bands</h3>
+                        <p class="text-gray-600 mb-4">Rock the stage with your band!</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-teal-600 font-medium">March 17, 2025</p>
+                            <p class="text-gray-500 text-sm">Open Air Theater</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="clay min-w-[300px] w-[300px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1511715282680-fbf93a50e721" alt="Debate" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-1 rounded mb-2">Cultural</span>
+                        <h3 class="text-xl font-bold mb-2">Debating Championship</h3>
+                        <p class="text-gray-600 mb-4">Battle of wits in our prestigious debating competition!</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-teal-600 font-medium">March 18, 2025</p>
+                            <p class="text-gray-500 text-sm">Conference Hall</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="clay min-w-[300px] w-[300px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1554344728-77cf90d9ed26" alt="Basketball" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded mb-2">Sports</span>
+                        <h3 class="text-xl font-bold mb-2">Basketball Tournament</h3>
+                        <p class="text-gray-600 mb-4">3-on-3 basketball tournament with exciting prizes!</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-teal-600 font-medium">March 19, 2025</p>
+                            <p class="text-gray-500 text-sm">Indoor Stadium</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" id="viewAllEvents" class="clay-button px-6 py-3 inline-block">View Complete Schedule</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Section -->
+    <section id="cultural" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 relative">
+                Cultural Events
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-teal-600 mt-4"></span>
+            </h2>
+            
+            <div class="cultural-bg p-10 mb-12">
+                <div class="text-center text-white max-w-3xl mx-auto mb-10">
+                    <h3 class="text-3xl font-bold mb-4">Celebrate Art & Expression</h3>
+                    <p class="text-lg">Showcase your talent and creativity in our diverse range of cultural competitions designed to bring out the best in you.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="clay-dark p-6">
+                        <i class="bi bi-music-note-beamed text-4xl mb-4 text-teal-300"></i>
+                        <h3 class="text-2xl font-bold mb-4">Music</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Solo Singing</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Battle of Bands</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Classical Music</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Rap Battle</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="clay-dark p-6">
+                        <i class="bi bi-person-walking text-4xl mb-4 text-teal-300"></i>
+                        <h3 class="text-2xl font-bold mb-4">Dance</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Solo Dance</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Group Dance</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Folk Dance</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Street Dance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="clay-dark p-6">
+                        <i class="bi bi-palette text-4xl mb-4 text-teal-300"></i>
+                        <h3 class="text-2xl font-bold mb-4">Fine Arts</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Painting</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Sculpture</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Photography</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Digital Art</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-teal-700">Cultural Night</h3>
+                    <p class="text-gray-700 mb-6">Experience a night of spectacular performances featuring the winners of various cultural competitions along with professional artists and celebrities.</p>
+                    <p class="text-gray-700 mb-6">The Cultural Night is the grand finale of ELAAN 2025's cultural segment, promising an unforgettable evening of entertainment and celebration.</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="flex items-center">
+                            <i class="bi bi-calendar-date text-teal-600 mr-2"></i>
+                            <span>March 19, 2025</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="bi bi-clock text-teal-600 mr-2"></i>
+                            <span>7:00 PM onwards</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="bi bi-geo-alt text-teal-600 mr-2"></i>
+                            <span>Main Auditorium</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="rounded-2xl overflow-hidden clay">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5463c2a?q=80&w=2070" alt="Cultural Night" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sports Section -->
+    <section id="sports" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 relative">
+                Sports Events
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-teal-600 mt-4"></span>
+            </h2>
+            
+            <div class="sports-bg p-10 mb-12">
+                <div class="text-center text-white max-w-3xl mx-auto mb-10">
+                    <h3 class="text-3xl font-bold mb-4">Champion the Field & Court</h3>
+                    <p class="text-lg">Test your athletic prowess and team spirit in our diverse range of sporting competitions with participants from universities nationwide.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="clay-dark p-6">
+                        <i class="bi bi-dribbble text-4xl mb-4 text-teal-300"></i>
+                        <h3 class="text-2xl font-bold mb-4">Team Sports</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Football</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Basketball</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Cricket</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Volleyball</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Kabaddi</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="clay-dark p-6">
+                        <i class="bi bi-person text-4xl mb-4 text-teal-300"></i>
+                        <h3 class="text-2xl font-bold mb-4">Individual Sports</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Athletics</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Swimming</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Chess</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Badminton</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Table Tennis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="clay-dark p-6">
+                        <i class="bi bi-trophy text-4xl mb-4 text-teal-300"></i>
+                        <h3 class="text-2xl font-bold mb-4">Special Events</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Marathon</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>CrossFit Challenge</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Tug of War</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Esports Tournament</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-300 mr-2"></i>Obstacle Course</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="rounded-2xl overflow-hidden clay">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2070" alt="Sports Event" class="w-full h-auto">
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-teal-700">Sports Meet Finale</h3>
+                    <p class="text-gray-700 mb-6">Join us for the grand closing ceremony of the sports segment featuring the awards presentation for all sporting events.</p>
+                    <p class="text-gray-700 mb-6">Experience the thrill of victory as we celebrate the champions of ELAAN 2025 Sports Meet in a spectacular ceremony with special guest appearances.</p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="flex items-center">
+                            <i class="bi bi-calendar-date text-teal-600 mr-2"></i>
+                            <span>March 20, 2025</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="bi bi-clock text-teal-600 mr-2"></i>
+                            <span>5:00 PM onwards</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="bi bi-geo-alt text-teal-600 mr-2"></i>
+                            <span>University Stadium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 relative">
+                Event Gallery
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-teal-600 mt-4"></span>
+            </h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item clay overflow-hidden cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2070')">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2070" alt="Dance Performance" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item clay overflow-hidden cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1505673542670-a5e3ff5b14a3?q=80&w=1974')">
+                    <img src="https://images.unsplash.com/photo-1505673542670-a5e3ff5b14a3?q=80&w=1974" alt="Musical Performance" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item clay overflow-hidden cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=2070')">
+                    <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=2070" alt="Football" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item clay overflow-hidden cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1481328101413-1eef25cc76c0?q=80&w=2070')">
+                    <img src="https://images.unsplash.com/photo-1481328101413-1eef25cc76c0?q=80&w=2070" alt="Art Exhibition" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item clay overflow-hidden cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2070')">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=2070" alt="Concert" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item clay overflow-hidden cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1544979590-37e9b47eb705?q=80&w=1972')">
+                    <img src="https://images.unsplash.com/photo-1544979590-37e9b47eb705?q=80&w=1972" alt="Basketball" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item clay overflow-hidden cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1571536155088-d2f7dea624a0?q=80&w=2104&amp=')">
+                    <img src="https://images.unsplash.com/photo-1571536155088-d2f7dea624a0?q=80&w=2104" alt="Award Ceremony" class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item clay overflow-hidden cursor-pointer" onclick="openModal('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2070')">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2070" alt="Campus" class="w-full h-64 object-cover">
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="clay-button px-6 py-3 inline-block">Upload Your Photos</a>
+            </div>
+            
+            <!-- Modal for Gallery -->
+            <div id="galleryModal" class="modal">
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="relative max-w-4xl w-full">
+                        <span class="absolute top-2 right-2 text-white text-3xl cursor-pointer z-10" onclick="closeModal()">&times;</span>
+                        <img id="modalImage" src="" alt="Gallery Image" class="max-h-[80vh] mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brochure Section -->
+    <section id="brochure" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto clay p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-center mb-8">Download Official Brochure</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1531053270060-6643c9e70732?q=80&w=1974" alt="Brochure Preview" class="w-full rounded-lg shadow-lg">
+                    </div>
+                    <div>
+                        <p class="text-gray-700 mb-6">Get all the details about ELAAN 2025 including complete schedule, venue information, prize details, and registration guidelines in our official brochure.</p>
+                        <ul class="text-gray-700 mb-6 space-y-2">
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-600 mr-2"></i>Detailed event schedule</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-600 mr-2"></i>Registration guidelines</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-600 mr-2"></i>Prize information</li>
+                            <li class="flex items-center"><i class="bi bi-check-circle-fill text-teal-600 mr-2"></i>Campus map & venues</li>
+                        </ul>
+                        <a href="#" class="clay-button px-6 py-3 inline-flex items-center">
+                            <i class="bi bi-download mr-2"></i> Download Brochure (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 relative">
+                Organizing Team
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-teal-600 mt-4"></span>
+            </h2>
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-gray-700">Meet the dedicated team behind ELAAN 2025. Our organizing committee works tirelessly to ensure an unforgettable experience for all participants.</p>
+            </div>
+            
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-center mb-10 text-teal-700">Faculty Coordinators</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="clay text-center p-6">
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2070" alt="Dr. Rajesh Kumar" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="text-xl font-bold">Dr. Rajesh Kumar</h4>
+                        <p class="text-gray-600">Dean of Student Affairs</p>
+                        <p class="text-teal-600 mt-2">Festival Chairman</p>
+                    </div>
+                    <div class="clay text-center p-6">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961" alt="Dr. Anita Singh" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="text-xl font-bold">Dr. Anita Singh</h4>
+                        <p class="text-gray-600">Head of Cultural Department</p>
+                        <p class="text-teal-600 mt-2">Cultural Coordinator</p>
+                    </div>
+                    <div class="clay text-center p-6">
+                        <img src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?q=80&w=2076" alt="Prof. Vikram Desai" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="text-xl font-bold">Prof. Vikram Desai</h4>
+                        <p class="text-gray-600">Director of Sports</p>
+                        <p class="text-teal-600 mt-2">Sports Coordinator</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl font-bold text-center mb-10 text-teal-700">Student Coordinators</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="clay text-center p-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974" alt="Rahul Sharma" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover">
+                        <h4 class="text-lg font-bold">Rahul Sharma</h4>
+                        <p class="text-gray-600 text-sm">Festival Secretary</p>
+                    </div>
+                    <div class="clay text-center p-4">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070" alt="Anjali Patel" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover">
+                        <h4 class="text-lg font-bold">Anjali Patel</h4>
+                        <p class="text-gray-600 text-sm">Cultural Secretary</p>
+                    </div>
+                    <div class="clay text-center p-4">
+                        <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?q=80&w=2070" alt="Suresh Menon" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover">
+                        <h4 class="text-lg font-bold">Suresh Menon</h4>
+                        <p class="text-gray-600 text-sm">Sports Secretary</p>
+                    </div>
+                    <div class="clay text-center p-4">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974" alt="Priya Gupta" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover">
+                        <h4 class="text-lg font-bold">Priya Gupta</h4>
+                        <p class="text-gray-600 text-sm">Marketing Head</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 relative">
+                Register Now
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-teal-600 mt-4"></span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="clay p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-teal-600 text-white py-1 px-4 text-sm">Student Registration</div>
+                    <h3 class="text-2xl font-bold mt-6 mb-4">University Students</h3>
+                    <p class="mb-6">For students of the host university who want to participate in ELAAN 2025 events.</p>
+                    
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i class="bi bi-check-circle-fill text-teal-600 mr-2 mt-1"></i>
+                            <span>Free registration for individual events</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="bi bi-check-circle-fill text-teal-600 mr-2 mt-1"></i>
+                            <span>Team registration fees apply for team events</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="bi bi-check-circle-fill text-teal-600 mr-2 mt-1"></i>
+                            <span>Valid university ID required</span>
+                        </li>
+                    </ul>
+                    
+                    <button onclick="openRegisterForm('internalForm')" class="clay-button px-6 py-3 w-full">Register as University Student</button>
+                </div>
+                
+                <div class="clay p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-teal-600 text-white py-1 px-4 text-sm">External Registration</div>
+                    <h3 class="text-2xl font-bold mt-6 mb-4">External Participants</h3>
+                    <p class="mb-6">For students from other colleges and universities who want to participate in ELAAN 2025.</p>
+                    
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i class="bi bi-check-circle-fill text-teal-600 mr-2 mt-1"></i>
+                            <span>Registration fee: ₹500 per individual event</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="bi bi-check-circle-fill text-teal-600 mr-2 mt-1"></i>
+                            <span>Team registration fees: ₹1000 per team</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="bi bi-check-circle-fill text-teal-600 mr-2 mt-1"></i>
+                            <span>Valid college ID required</span>
+                        </li>
+                    </ul>
+                    
+                    <button onclick="openRegisterForm('externalForm')" class="clay-button px-6 py-3 w-full">Register as External Participant</button>
+                </div>
+            </div>
+            
+            <!-- Registration Form Modal -->
+            <div id="registrationModal" class="modal">
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div id="internalForm" class="hidden relative max-w-md w-full bg-white rounded-lg shadow-xl p-8">
+                        <button onclick="closeRegisterForm()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">&times;</button>
+                        <h3 class="text-2xl font-bold mb-6 text-center">University Student Registration</h3>
+                        <form id="internalRegistrationForm" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Full Name</label>
+                                <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">University ID</label>
+                                <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Event Category</label>
+                                <select required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                                    <option value="">Select Event Category</option>
+                                    <option>Cultural - Solo Performance</option>
+                                    <option>Cultural - Group Performance</option>
+                                    <option>Sports - Individual</option>
+                                    <option>Sports - Team</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Specific Event</label>
+                                <select required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                                    <option value="">Select Specific Event</option>
+                                    <option>Dance Competition</option>
+                                    <option>Singing Competition</option>
+                                    <option>Battle of Bands</option>
+                                    <option>Football</option>
+                                    <option>Basketball</option>
+                                    <option>Athletics</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="clay-button w-full py-3">Submit Registration</button>
+                        </form>
+                    </div>
+                    
+                    <div id="externalForm" class="hidden relative max-w-md w-full bg-white rounded-lg shadow-xl p-8">
+                        <button onclick="closeRegisterForm()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">&times;</button>
+                        <h3 class="text-2xl font-bold mb-6 text-center">External Participant Registration</h3>
+                        <form id="externalRegistrationForm" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Full Name</label>
+                                <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">College/University Name</label>
+                                <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">College ID</label>
+                                <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Event Category</label>
+                                <select required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                                    <option value="">Select Event Category</option>
+                                    <option>Cultural - Solo Performance</option>
+                                    <option>Cultural - Group Performance</option>
+                                    <option>Sports - Individual</option>
+                                    <option>Sports - Team</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Specific Event</label>
+                                <select required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                                    <option value="">Select Specific Event</option>
+                                    <option>Dance Competition</option>
+                                    <option>Singing Competition</option>
+                                    <option>Battle of Bands</option>
+                                    <option>Football</option>
+                                    <option>Basketball</option>
+                                    <option>Athletics</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Payment Method</label>
+                                <select required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+                                    <option value="">Select Payment Method</option>
+                                    <option>UPI</option>
+                                    <option>Credit/Debit Card</option>
+                                    <option>Net Banking</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="clay-button w-full py-3">Proceed to Payment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-teal-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ELAAN 2025</h3>
+                    <p class="mb-4">The Annual Cultural & Sports Festival of our University.</p>
+                    <p>March 15-20, 2025</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-teal-200">Home</a></li>
+                        <li><a href="#events" class="hover:text-teal-200">Events</a></li>
+                        <li><a href="#cultural" class="hover:text-teal-200">Cultural</a></li>
+                        <li><a href="#sports" class="hover:text-teal-200">Sports</a></li>
+                        <li><a href="#register" class="hover:text-teal-200">Register</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="flex items-center mb-2">
+                        <i class="bi bi-envelope mr-2"></i>
+                        <a href="mailto:elaan2025@university.edu">elaan2025@university.edu</a>
+                    </p>
+                    <p class="flex items-center mb-2">
+                        <i class="bi bi-telephone mr-2"></i>
+                        <a href="tel:+911234567890">+91 1234 567 890</a>
+                    </p>
+                    <p class="flex items-start">
+                        <i class="bi bi-geo-alt mr-2 mt-1"></i>
+                        <span>University Campus, Main Road, City - 500001</span>
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="hover:text-teal-200 text-2xl"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="hover:text-teal-200 text-2xl"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="hover:text-teal-200 text-2xl"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="hover:text-teal-200 text-2xl"><i class="bi bi-youtube"></i></a>
+                    </div>
+                    <p>Subscribe to our newsletter</p>
+                    <div class="flex mt-2">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full focus:outline-none">
+                        <button class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-r-lg">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-teal-700 mt-8 pt-8 text-center">
+                <p>&copy; 2025 ELAAN - University Cultural & Sports Festival. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('March 15, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        }
+
+        // Initialize countdown
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Gallery modal functions
+        function openModal(imgSrc) {
+            document.getElementById('galleryModal').style.display = 'block';
+            document.getElementById('modalImage').src = imgSrc;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('galleryModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Registration form functions
+        function openRegisterForm(formId) {
+            document.getElementById('registrationModal').style.display = 'block';
+            document.getElementById('internalForm').classList.add('hidden');
+            document.getElementById('externalForm').classList.add('hidden');
+            document.getElementById(formId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRegisterForm() {
+            document.getElementById('registrationModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Form submission
+        document.getElementById('internalRegistrationForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for registering! Your registration has been confirmed.');
+            closeRegisterForm();
+            this.reset();
+        });
+
+        document.getElementById('externalRegistrationForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for registering! Please complete the payment process to confirm your registration.');
+            // Here we would normally redirect to payment gateway
+            closeRegisterForm();
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                if (!document.getElementById('mobileMenu').classList.contains('hidden')) {
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+
+        // View All Events button
+        document.getElementById('viewAllEvents')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Complete schedule will be available in the brochure.');
+        });
+
+        // Upload Photos functionality
+        document.querySelector('.clay-button:contains("Upload Your Photos")')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Photo upload feature will be available during the festival.');
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
